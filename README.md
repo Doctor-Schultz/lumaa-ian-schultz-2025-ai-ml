@@ -7,6 +7,8 @@ Setup
 
 Running:
 ============
+To see a video demo of how to run this program, [click here.](https://youtu.be/3ytnFtzq95Y)
+
 This is a console based program. The command to run this program must follow the format:
 >python3 movieRecommender.py numRows numRecommendations
 
