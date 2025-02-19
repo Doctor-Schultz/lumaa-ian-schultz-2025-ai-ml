@@ -12,14 +12,12 @@ rows = 1500
 nRecommendations = 5
 userDescription = ""
 
-'''Some recommended descriptions to mess around with:
-"Horror or slasher movies where the main protagonists are chased by an evil killer."
-"World war two movie following soldiers as they liberate German occupied Europe." 
-"A mystery where the protagonist must find the killer behind the string of murders before it is too late." '''
-
 def vectorizeData(moviesDF):
-    # We can only vectorize the user's description in the context of the other movie descriptions,
-    # so it must be included in the dataset:
+    """Converts paragraphs of text in to vectors using sklearn's tfidf_vectorizer and returns a matrix. 
+       We can only vectorize the user's description in the context of the other movie descriptions,
+       so it must be included in the dataset.
+    """
+    
     moviesDF.loc[-1] = ['User Description', userDescription]
     moviesDF.index = moviesDF.index + 1
     moviesDF.sort_index(inplace=True) 
@@ -27,6 +25,8 @@ def vectorizeData(moviesDF):
     return tfidf_vectorizer.fit_transform(moviesDF['overview'])
 
 def findSimilarity(vectorizedMovies):
+    """Computes the cosine similarity score between a dataframe of vectors, returns  a column vector of these scores."""
+
     # While this does compute similarity between user description and itself, 
     # keeping arrays the same size prevents the code from getting ugly in my opinion:
     cosSimilarities = cosine_similarity(vectorizedMovies[0], vectorizedMovies)
@@ -34,6 +34,8 @@ def findSimilarity(vectorizedMovies):
     return cosSimilarities
 
 def printRecommendations(moviesDF):
+    """Sorts a moviesDF by cosine similarity score, then prints the top n results."""
+
     moviesDF = moviesDF.sort_values(by='similarity', ascending=False)
     top_n_similar_movies = moviesDF.head(nRecommendations)
 
@@ -50,6 +52,7 @@ def printRecommendations(moviesDF):
         print("\n")
 
 def main(moviesDF):
+    """Coordinates: vectorization of movie descriptions, computation of cosine scores, and printing of top results."""
     # STEP 2 - convert movie descriptions to vectors so we may compute cos of their angles (this corresponds to their similarity)
     vectorizedMovies = vectorizeData(moviesDF)
 
