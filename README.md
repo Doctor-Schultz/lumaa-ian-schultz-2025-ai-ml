@@ -1,6 +1,6 @@
 Setup
 ============
-**pandas** and **scikit-learn** are necessary for this program, as well as **Python 3**.10.12 or later. If you don't the libraries already, run:
+**pandas** and **scikit-learn** are necessary for this program, as well as **Python 3**.10.12 or later. If you don't have the libraries already, run:
 > pip install scikit-learn
 > pip install pandas
 
