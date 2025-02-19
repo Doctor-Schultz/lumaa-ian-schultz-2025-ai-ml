@@ -2,6 +2,7 @@ Setup
 ============
 **pandas** and **scikit-learn** are necessary for this program, as well as **Python 3**.10.12 or later. If you don't have the libraries already, run:
 > pip install scikit-learn
+
 > pip install pandas
 
 Running:
@@ -23,8 +24,10 @@ A list of movie titles, cosine similarity scores, and movie descriptions will be
 
 An example of running 
 > python3 movieRecommender.py 2000 5 
+
 and entering
 > Horror or slasher movies where the main protagonists are chased by an evil killer.
+
 will print the following to your console:
 ~~~
 Your recommended movies, in descending order:
