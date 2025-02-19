@@ -38,7 +38,8 @@ def printRecommendations(moviesDF):
     top_n_similar_movies = moviesDF.head(nRecommendations)
 
     # Printing the actual results:
-    print("\nYour recommended movies, in descending order:\n")
+    print("\n======================================\n")
+    print("Your recommended movies, in descending order:\n")
     for index, row in top_n_similar_movies.iterrows():
         print(f"Title: {row['title']}")
         print(f"Cos Similarity: {row['similarity']}")
