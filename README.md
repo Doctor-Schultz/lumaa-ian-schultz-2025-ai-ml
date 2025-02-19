@@ -1,91 +1,74 @@
-# AI/Machine Learning Intern Challenge: Simple Content-Based Recommendation
+Setup
+============
+**pandas** and **scikit-learn** are necessary for this program, as well as **Python 3**.10.12 or later. If you don't the libraries already, run:
+> pip install scikit-learn
+> pip install pandas
 
-**Deadline**: Sunday, Feb 23th 11:59 pm PST
+Running:
+============
+This is a console based program. The command to run this program must follow the format *python3 movieRecommender.py numRows numRecommendations*, where *numRows* is the number of rows to use from the dataset, and *numRecommendations* is the number of movies you want recommended to you. 
+The higher the value numRows is set to the better the results, because there are more movies to search, so I recommend starting with a value of at least *2000*. 
 
----
+An example to get you started would be:
+> python3 movieRecommender.py 2000 5
 
-## Overview
+After entering said command, you will be asked to provide a short description of what type of movie you like in to the console. A few examples to try out are:
+    * Horror or slasher movies where the main protagonists are chased by an evil killer.
+    * World war two movie following soldiers as they liberate German occupied Europe.
+    * A mystery where the protagonist must find the killer behind the string of murders before it is too late.
 
-Build a **content-based recommendation system** that, given a **short text description** of a user’s preferences, suggests **similar items** (e.g., movies) from a small dataset. This challenge should take about **3 hours**, so keep your solution **simple** yet **functional**.
+Results:
+============
+A list of movie titles, cosine similarity scores, and movie descriptions will be printed to the console. 
 
-### Example Use Case
+An example of running 
+> python3 movieRecommender.py 2000 5 
+and entering
+> Horror or slasher movies where the main protagonists are chased by an evil killer.
+will print the following to your console:
+~~~
+Your recommended movies, in descending order:
 
-- The user inputs:  
-  *"I love thrilling action movies set in space, with a comedic twist."*  
-- Your system processes this description (query) and compares it to a dataset of items (e.g., movies with their plot summaries or keywords).  
-- You then return the **top 3–5 “closest” matches** to the user.
+Title: Scary Movie 2
+Cos Similarity: 0.1407188798679068
+Description: While the original parodied slasher flicks like Scream Keenen Ivory Wayans's sequel to Scary Movie takes
+comedic aim at haunted house movies. A group of students visit a mansion called "Hell House" and murderous high jinks
+ensue.
 
----
 
-## Requirements
+Title: Bring It On: Cheer Or Die
+Cos Similarity: 0.11725679311269392
+Description: When a cheer squad practices their routines on Halloween weekend in an abandoned school they are picked offone by one by an unknown killer.
 
-1. **Dataset**  
-   - Use a **small** public dataset of items (e.g., a list of movies with plot summaries, or other textual descriptions).  
-   - Make sure the dataset is easy to handle (maybe 100–500 rows) so the solution remains quick to implement and run.  
-   - Include the dataset in your forked repository *or* provide instructions/link on how to download it.  
 
-2. **Approach**  
-   - **Content-Based**: At a minimum, use text similarity to recommend items.  
-     - For instance, you can transform both the user’s text input and each item’s description into TF-IDF vectors and compute **cosine similarity**.  
-   - Return the **top N** similar items (e.g., top 5).
+Title: Scary Movie
+Cos Similarity: 0.10508147348956917
+Description: A familiar-looking group of teenagers find themselves being stalked by a more-than-vaguely recognizable
+masked killer! As the victims begin to pile up and the laughs pile on none of your favorite scary movies escape the
+razor-sharp satire of this outrageously funny parody!
 
-3. **Code Organization**  
-   - You may use a **Jupyter Notebook** or **Python scripts**.  
-   - Keep it **readable** and **modular** (e.g., one section for loading data, one for building vectors, one for computing similarity, etc.).  
-   - Briefly comment or docstring your key functions/sections.
 
-4. **Output**  
-   - When given an input description (e.g., `"I like action movies set in space"`), your system should print or return a list of recommended items (e.g., 3–5 titles).  
-   - Include the similarity score or rank if you’d like.
+Title: Senior Year
+Cos Similarity: 0.09777313843010346
+Description: A thirty-seven-year-old woman wakes up from a twenty-year coma and returns to the high school where she wasonce a popular cheerleader to finish her senior year and become prom queen. The main plot is the empowerment of LGBTQ
+rights and progress through the years.
 
-5. **Summary & Instructions**  
-   - A short `README.md` that includes:
-     - **Dataset**: Where it’s from, any steps to load it.  
-     - **Setup**: Python version, virtual environment instructions, and how to install dependencies (`pip install -r requirements.txt`).  
-     - **Running**: How to run your code (e.g., `python recommend.py "Some user description"` or open your notebook in Jupyter).  
-     - **Results**: A brief example of your system’s output for a sample query.
 
----
+Title: The Gangster, the Cop, the Devil
+Cos Similarity: 0.09701549432067275
+Description: After barely surviving a violent attack by an elusive serial killer crime boss Jang Dong-su finds himself
+forming an unlikely partnership with local detective Jung Tae-seok to catch the sadistic killer simply known as K.
+~~~
 
-## Deliverables
+Dataset
+============
+This program uses the **wykonos/movies** dataset from Hugging Face. For convenience, the dataset is included as the movies_dataset.csv file in this repo- as long as this .csv is in the same directory as the python file, no extra steps are necessary.
 
-1. **Fork the Public Repository**  
-   - **Fork** this repo into your own GitHub account.
+For more information on the dataset [click here](https://huggingface.co/datasets/wykonos/movies?row=5)
 
-2. **Implement Your Solution**  
-   - Load and preprocess your dataset (e.g., read CSV, handle text columns).  
-   - Convert text data to vectors (e.g., TF-IDF).  
-   - Implement a function to compute similarity between the user’s query and each item’s description.  
-   - Return the top matches.
-   - Salary expectation per month (Mandatory)
-
-3. **Short Video Demo**  
-   - In a `.md` file (e.g., `demo.md`) within your fork, paste a link to a **brief screen recording** (video link).  
-   - Demonstrate:
-     - How you run the recommendation code.  
-     - A sample query and the results.
-
-4. **Deadline**  
-   - Submit your fork by **Sunday, Feb 23th 11:59 pm PST**.
-
-> **Note**: This should be doable within ~3 hours. Keep it **straightforward**—you do **not** need advanced neural networks or complex pipelines. A simple TF-IDF + cosine similarity approach is sufficient.
-
----
-
-## Evaluation Criteria
-
-1. **Functionality**  
-   - Does your code run without errors?  
-   - When given an input query, does it successfully output relevant items?
-
-2. **Code Quality**  
-   - Clear, commented code (where it counts).  
-   - Logical steps (load data → transform → recommend).
-
-3. **Clarity**  
-   - Is your `README.md` straightforward about setup, how to run, and what to expect?
-
-4. **ML/Recommendation Understanding**  
-   - Basic implementation of a content-based recommendation approach (vectorization, similarity measure).
-
-**We look forward to seeing your solution!** Good luck!
+Miscellaneous:
+============
+My contact info is:
+    * ischultz@asu.edu
+    * 602-377-6290
+As per instruction, my expected monthly salary is $1600, however this is flexible. 
