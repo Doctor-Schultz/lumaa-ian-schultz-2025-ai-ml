@@ -7,16 +7,19 @@ Setup
 
 Running:
 ============
-This is a console based program. The command to run this program must follow the format *python3 movieRecommender.py numRows numRecommendations*, where *numRows* is the number of rows to use from the dataset, and *numRecommendations* is the number of movies you want recommended to you. 
-The higher the value numRows is set to the better the results, because there are more movies to search, so I recommend starting with a value of at least *2000*. 
+This is a console based program. The command to run this program must follow the format:
+>python3 movieRecommender.py numRows numRecommendations
+
+where *numRows* is the number of rows to use from the dataset, and *numRecommendations* is the number of movies you want recommended to you. 
+The higher the value numRows is set to the better the results, because there are more movies to search, which is why I allow the user to set this value. I recommend starting with a value of at least *2000*. 
 
 An example to get you started would be:
 > python3 movieRecommender.py 2000 5
 
 After entering said command, you will be asked to provide a short description of what type of movie you like in to the console. A few examples to try out are:
-    * Horror or slasher movies where the main protagonists are chased by an evil killer.
-    * World war two movie following soldiers as they liberate German occupied Europe.
-    * A mystery where the protagonist must find the killer behind the string of murders before it is too late.
+* Horror or slasher movies where the main protagonists are chased by an evil killer.
+* World war two movie following soldiers as they liberate German occupied Europe.
+* A mystery where the protagonist must find the killer behind the string of murders before it is too late.
 
 Results:
 ============
@@ -65,7 +68,7 @@ forming an unlikely partnership with local detective Jung Tae-seok to catch the 
 
 Dataset
 ============
-This program uses the **wykonos/movies** dataset from Hugging Face. For convenience, the dataset is included as the movies_dataset.csv file in this repo- as long as this .csv is in the same directory as the python file, no extra steps are necessary.
+This program uses the **wykonos/movies** dataset from Hugging Face. For convenience, the dataset has been shrunken and is included as the movies_dataset.csv file in this repo- as long as this .csv is in the same directory as the python file, no extra steps are necessary.
 
 For more information on the dataset [click here](https://huggingface.co/datasets/wykonos/movies?row=5)
 
