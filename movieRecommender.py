@@ -69,13 +69,21 @@ if __name__ == "__main__":
         rows = int(sys.argv[1])
         nRecommendations = int(sys.argv[2])
     except IndexError:
-        print("Improper arguments. Must follow the format: python3 movieRecommender.py numRows numRecommendations")
+        print("ERROR: Improper arguments. Must follow the format: python3 movieRecommender.py numRows numRecommendations")
+        exit(1)
+
+    if rows > 14300:
+        print("ERROR: Number of requested rows is too high")
+        exit(1)
+    elif nRecommendations > rows:
+        print("ERROR: Requesting more recommendations than number of rows used")
+        exit(1)
 
     while(True):
         userDescription = input("Type 1 to exit, or enter a brief description of what type of movie you like:\n")
         if userDescription == "1":
             exit(0)
-
+        
         # STEP 1 - load database (must reload when performing a new search)
         moviesDF = pd.read_csv("movies_dataset.csv", nrows=rows)
         moviesDF = moviesDF.dropna() # some of the 'overview' entries are empty
