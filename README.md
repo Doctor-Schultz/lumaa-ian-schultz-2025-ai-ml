@@ -71,7 +71,5 @@ For more information on the dataset [click here](https://huggingface.co/datasets
 
 Miscellaneous:
 ============
-My contact info is:
-    * ischultz@asu.edu
-    * 602-377-6290
+My contact info is ischultz@asu.edu and 602-377-6290
 As per instruction, my expected monthly salary is $1600, however this is flexible. 
